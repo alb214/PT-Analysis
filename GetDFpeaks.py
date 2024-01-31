@@ -5,11 +5,11 @@ Created on Wed Oct 19 12:55:28 2022
 @author: aboeh
 
 """
-import importlib,sys
-importlib.reload(sys.modules['basics_forGithub'])
-from ERSremoval_forGithub import GetSidesFromWidth #GetHalfWidths
-from basics_forGithub import FindIndexX,RemoveNotch,NormalizeTo1,ensure_dir
 
+from ERSremoval import GetSidesFromWidth #GetHalfWidths
+from basics import FindIndexX,RemoveNotch,NormalizeTo1,ensure_dir
+import importlib,sys
+importlib.reload(sys.modules['basics'])
 import h5py
 import matplotlib.pyplot as plt
 from matplotlib.ticker import (MultipleLocator, FormatStrFormatter,
