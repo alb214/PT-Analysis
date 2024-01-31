@@ -1,19 +1,10 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Mon Sep 11 14:45:35 2023
 
-@author: aboeh
-
-
-"""
-import importlib,sys
-importlib.reload(sys.modules['basics_forGithub'])
 import h5py
 import matplotlib.pyplot as plt
 import matplotlib.colors as clrs
 from matplotlib.ticker import (MultipleLocator, FormatStrFormatter,
                                 AutoMinorLocator)
-
 import pandas as pd
 import numpy as np
 import cv2 as cv
@@ -25,15 +16,11 @@ from sklearn.decomposition import PCA as sk_pca
 # from sklearn.cluster import KMeans
 from sklearn.covariance import EmpiricalCovariance, MinCovDet 
 
-from basics_forGithub import ReduceNoise,FindIndexX,CreateColorsList,MakeExponentialStr,ensure_dir, NormalizeTo1,NormalizeTo1Special,NormyNormSpecial, SortKeys, SortParticles
-import Picocavities_forGithub as pico
-from CosmicRays_forGithub import RemoveCosmicRays
-
-# <> DEAL WITH THIS:
-from lab02_instrument_response_function_v10 import IRF,CropLaserLine
-
-version = 'v03'
-
+from basics import ReduceNoise,FindIndexX,CreateColorsList,MakeExponentialStr,ensure_dir, NormalizeTo1,NormalizeTo1Special,NormyNormSpecial, SortKeys, SortParticles
+import Picocavities as pico
+from CosmicRays import RemoveCosmicRays
+import importlib,sys
+importlib.reload(sys.modules['basics'])
 
 cm = 1/2.54  # centimeters in inches
 
@@ -42,62 +29,6 @@ plt.rcParams.update({'font.size': 10})
 plt.rcParams.update({
     "text.usetex": False,
 })
-
-
-
-
-
-# def MakeSample_dict(pth,folder,h5file,sample,readoutnoiselevel,X,power,show=True,save=False):
-#     '''
-#     h5file must be ..._combined.h5
-#     X must be Gen_Wn.
-#     Stores average of timescan in dictionary of particles.
-#     Scaled offNPoM laser line is subtracted from each average.
-#     All negative points in |X| < 20 cm-1 are set to 10**-4.
-#     Spectrum is not cut.
-#     Plot is on log scale.
-#     '''
-#     fullname = pth + folder + h5file
-#     Title = sample + ' all particles - laser line subtracted'#h5file.split('.')[0] + ' ' + sample
-#     sample_dict = {}
-#     fig,ax = plt.subplots(nrows=1, ncols=1,figsize=(5,5))
-#     ax.set_title(Title)
-#     with h5py.File(fullname, 'r') as f:  
-#         BG = (f['Reference and Background Spectra']['BG'][:]-readoutnoiselevel) / f['Reference and Background Spectra']['BG'].attrs['Exposure']
-#         off = ((f['Reference and Background Spectra']['offNPoM'][:]-(readoutnoiselevel)) / f['Reference and Background Spectra']['offNPoM'].attrs['Exposure']) - BG
-#         laser_line = CropLaserLine(off)  
-#         group = f['ParticleScannerScan_0']
-#         particles = [key for key in group.keys() if 'Particle' in key]
-#         particles_sorted,timestamps = SortKeys(group,particles)
-#     #     print(group['Particle_0'].keys()) #'CWL.thumb_image_0', 'SERS_0', 'z_scan_0'
-#         for p,particle in enumerate(particles_sorted):
-#             SERS = group[particle]['SERS_0'][:]
-#             exposure = group[particle]['SERS_0'].attrs['Exposure']
-#             if len(np.shape(SERS)) > 1:
-#                 total = np.zeros(np.shape(SERS)[1])
-#                 for row in SERS:
-#                     Y = (((row-readoutnoiselevel)/exposure/power) - BG )
-#                     total += Y
-#                 average = (total / np.shape(SERS)[0])
-#             else:
-#                 average = (((SERS-readoutnoiselevel)/exposure/power) - BG )
-#             ci = FindIndexX(0,X)
-#             mx_ave = max(average[:ci])
-#             laser_line_scaled = NormalizeTo1(laser_line) * mx_ave
-
-#             Ynew = average - laser_line_scaled
-#             Ynew[(Ynew <= 0.) & (np.abs(X) < 20.)] = 10**-4
-#             sample_dict[particle] = Ynew#[ai:bi]
-#             ax.plot(X,Ynew)      
-#     ax.set(yscale='log')
-#     if show:
-#         fig.show()
-#     if save:
-#         figname = pth+folder+Title+'.png'
-#         print(figname)
-#         ensure_dir(figname)
-#         fig.savefig(figname,format='png',bbox_inches='tight',transparent=False)
-#     return sample_dict
 
 
 
