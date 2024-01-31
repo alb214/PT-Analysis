@@ -1,9 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Sun Sep  3 16:02:07 2023
 
-@author: aboeh
-"""
 
 
 import importlib,sys
@@ -30,8 +26,8 @@ from matplotlib.ticker import (MultipleLocator, FormatStrFormatter,
                                 AutoMinorLocator)
 # from matplotlib.patches import Polygon
 
-from basics_forGithub import FindIndexX, FindClosesetXbelow_w, Split2, Split3, butterLowpassFiltFilt, ReduceNoise, Smooth, ensure_dir
-import ERSremoval_v9 as ers_v9
+from basics import FindIndexX, FindClosesetXbelow_w, Split2, Split3, butterLowpassFiltFilt, ReduceNoise, Smooth, ensure_dir
+#import ERSremoval_v9 as ers_v9
 
 
 # laser frequency 
