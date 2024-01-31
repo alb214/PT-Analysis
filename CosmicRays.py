@@ -8,7 +8,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.signal import savgol_filter
 
-from basics_forGithub import NormyNormSpecial
+from basics import NormyNormSpecial
 
 def DeleteCosmicRays(X,Y,peaks_i,peaks_x,peaks_y):
     '''Delete one cosmic ray at at time.'''
