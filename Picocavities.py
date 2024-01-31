@@ -11,7 +11,7 @@ Created on Thu Dec  1 15:16:34 2022
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.colors as clrs
-from basics_forGithub import FindIndexX,ReduceNoise,ensure_dir,NormalizeTo1
+from basics import FindIndexX,ReduceNoise,ensure_dir,NormalizeTo1
 from matplotlib.ticker import (MultipleLocator, FormatStrFormatter,
                                AutoMinorLocator)
 
