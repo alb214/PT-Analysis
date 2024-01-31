@@ -1,19 +1,10 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Mon Sep  4 16:13:02 2023
 
-@author: aboeh
-
-"""
-
+import ERSremoval as ers
+from basics import FindIndexX, CreateColorsList, check_for_row, append_list_as_row, ReduceNoise, Smooth, ensure_dir
 
 import importlib,sys
-importlib.reload(sys.modules['basics_forGithub'])
-
-# import ERSremoval_v30 as ers
-import ERSremoval_forGithub as ers
-from basics_forGithub import FindIndexX, CreateColorsList, check_for_row, append_list_as_row, ReduceNoise, Smooth, ensure_dir
-
+importlib.reload(sys.modules['basics'])
 
 import numpy as np
 import matplotlib.pyplot as plt
