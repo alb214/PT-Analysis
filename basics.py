@@ -1,6 +1,3 @@
-# module for Jupyter notebooks
-# basics 
-
 
 import datetime
 import numpy as np
@@ -14,10 +11,8 @@ import matplotlib.patches as patches
 import csv
 # from os import listdir
 import os
-#import fit
 # from scipy.signal import find_peaks
 from scipy.interpolate import interp1d
-# from scipy.signal import savgol_filter
 from scipy.optimize import curve_fit
 
 from scipy.signal import butter, filtfilt, savgol_filter
